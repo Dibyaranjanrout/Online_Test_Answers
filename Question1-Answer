@@ -3,7 +3,7 @@
 
 This architecture is used in a client-server application such as a web application that has the frontend, the backend and the database.
 
-I have made use of the following AWS services to design and build a three-tier cloud infrastructure.
+I have made use of the following AWS services to build a design of three-tier cloud infrastructure.
 
 - Elastic Compute Cloud (EC2)
 - Auto Scaling Group,
