@@ -1,0 +1,57 @@
+3 Tier Architecture Environment:
+--------------------------------------
+
+This architecture is used in a client-server application such as a web application that has the frontend, the backend and the database.
+
+I have made use of the following AWS services to design and build a three-tier cloud infrastructure.
+
+- Elastic Compute Cloud (EC2)
+- Auto Scaling Group,
+- Virtual Private Cloud(VPC)
+- Elastic Load Balancer (ELB)
+- Security Groups and the Internet Gateway.
+
+Flow:
+
+Fow Flow Please follow the Word file
+  
+
+Steps to create
+----------------------
+
+- We have to create a Virtual Private Cloud VPC.
+  Go to the VPC section of the AWS services, and click on the Create VPC button.
+  CIDR block of 10.0.0.0/16
+  
+- Setup the Internet Gateway
+  Select the VPC to attach the internet gateway
+  
+- We have to create 4 subnets with the following
+
+  demo-public-subnet-1 | CIDR (10.0.1.0/24) | Availability Zone (us-east-1a)
+  demo-public-subnet-2 | CIDR (10.0.2.0/24) | Availability Zone (us-east-1b)
+  demo-private-subnet-3 | CIDR (10.0.3.0/24) | Availability Zone (us-east-1a)
+  demo-private-subnet-4 | CIDR(10.0.4.0/24) | Availability Zone (us-east-1b)
+  
+- Create Two Route Tables
+- We need two route tables; private route table and public route table. The public route table will define which subnets that will have direct access to the internet ( ie public subnets) while the private route table will define which subnet goes through the NAT gateway (ie private subnet).
+
+- Create the NAT Gateway:
+  We will be editing the private route table to make use of the NAT gateway to access the internet.
+  
+- Create Elastic Load Balancer
+
+- Configure the Load Balancer with a name. 
+  Select internet facing for the load balancer that we will use to communicate with the frontend and internal for the one we will use for our backend.
+  
+- Under the Availability Zone, for the internet facing Load Balancer, we will select the two public subnets while for our internal Load Balancer, we will select the two private subnet.
+
+- Under the Security Group, we only need to allow ports that the application needs. For instance, we need to allow HTTP port 80 and/or HTTPS port 443 on our internet facing load balancer
+
+- Under the Configure Routing, we need to configure our Target Group to have the Target type of instance. We will give the Target Group a name that will enable us to identify it.
+
+- Create a Auto Scaling Group.
+  We Choose the appropriate instance type
+  
+- Create aBastion Host
+  The bastion host is just an EC2 instance that sits in the public subnet to connect to provate subnet
