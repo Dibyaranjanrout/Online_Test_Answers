@@ -54,4 +54,6 @@ Steps to create
   We Choose the appropriate instance type
   
 - Create a Bastion Host
-  The bastion host is just an EC2 instance that sits in the public subnet to connect to provate subnet
+  The bastion host is just an EC2 instance that sits in the public subnet to connect to provate subnet.
+
+- I have uploaded the flow in a file called 3 Tier Architecture Flow.
